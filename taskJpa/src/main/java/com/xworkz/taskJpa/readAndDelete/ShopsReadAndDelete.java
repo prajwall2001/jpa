@@ -23,12 +23,11 @@ public class ShopsReadAndDelete {
 
         ShopsEntity findEntity = em.find(ShopsEntity.class, 2);
         if (findEntity != null) {
-            findEntity.setGstNo("pr8989889pr");
-            em.merge(findEntity);
-            System.out.println("Details found and updated");
+            em.remove(findEntity);
+            System.out.println("Details found and deleted");
         }
         else{
-            System.out.println("Can't update");
+            System.out.println("Can't delete");
         }
         et.commit();
         System.out.println("Closing EM,EMF");

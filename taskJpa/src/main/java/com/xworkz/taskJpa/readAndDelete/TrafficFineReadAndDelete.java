@@ -22,12 +22,11 @@ public class TrafficFineReadAndDelete {
 
         TrafficFineEntity findEntity = em.find(TrafficFineEntity.class, 2);
         if (findEntity != null) {
-            findEntity.setVehicleNo("KA30GH3456");
-            em.merge(findEntity);
-            System.out.println("Details found and updated");
+            em.remove(findEntity);
+            System.out.println("Details found and deleted");
         }
         else{
-            System.out.println("Can't update");
+            System.out.println("Can't delete");
         }
         et.commit();
         System.out.println("Closing EM,EMF");

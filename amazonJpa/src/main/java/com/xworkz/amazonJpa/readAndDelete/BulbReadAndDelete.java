@@ -1,16 +1,15 @@
-package com.xworkz.taskJpa.readAndDelete;
+package com.xworkz.amazonJpa.readAndDelete;
 
-import com.xworkz.taskJpa.entity.ShopsEntity;
-import com.xworkz.taskJpa.entity.SportEntity;
+import com.xworkz.amazonJpa.entity.BulbEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class SportReadAndDelete {
+public class BulbReadAndDelete {
     public static void main(String[] args) {
-        System.out.println("Invoking ToyUpdateRunner...");
+        System.out.println("Invoking main...");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("x-workz");
         System.out.println(emf);
         EntityManager em = emf.createEntityManager();
@@ -21,7 +20,7 @@ public class SportReadAndDelete {
         et.begin();
         System.out.println("ET begins");
 
-        SportEntity findEntity = em.find(SportEntity.class, 2);
+        BulbEntity findEntity = em.find(BulbEntity.class, 2);
         if (findEntity != null) {
             em.remove(findEntity);
             System.out.println("Details found and deleted");
