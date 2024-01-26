@@ -4,18 +4,19 @@ import com.xworkz.fertilizerJpa.entity.TempleEntity;
 import com.xworkz.fertilizerJpa.repo.TempleRepository;
 import com.xworkz.fertilizerJpa.repo.TempleRepositoryImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class TempleRunner {
     public static void main(String[] args) {
         System.out.println("Invoking main");
 
-//        TempleEntity entity=new TempleEntity("Isckon temple","Mahalakshmi layout",100,1000, LocalDate.of(2010,8,21),"Radha krishna",1500.60);
+       TempleEntity entity=new TempleEntity("Isckon temple","Mahalakshmi layout",100,1000, LocalDate.of(2010,8,21),"Radha krishna",1500.60);
 //        TempleEntity entity1=new TempleEntity("Anjaneya temple","HSR layout",300,1500, LocalDate.of(2020,4,11),"Hanumaan",2000);
 //        TempleEntity entity2=new TempleEntity("Ram mandir","Rajajinagar",150,1800, LocalDate.of(2018,8,28),"Ram",1200.50);
 //        TempleEntity entity3=new TempleEntity("Shiv temple","Majestic",50,1500, LocalDate.of(2024,1,11),"Shiva",200.60);
         TempleRepository repo = new TempleRepositoryImpl();
-//        //repo.save(entity);
+        repo.save(entity);
 //        List<TempleEntity> lists= Arrays.asList(entity,entity1,entity2,entity3);
 //        repo.saveAll(lists);
 
@@ -51,7 +52,28 @@ public class TempleRunner {
 //        List<TempleEntity> list1=repo.findByIdAndMainGod(4,"Hanumaan");
 //        list1.forEach(o-> System.out.println(o));
 
-        System.out.println("FindTotal");
-        System.out.println("Total:"+repo.findTotal());
+//        System.out.println("FindTotal");
+//        System.out.println("Total:"+repo.findTotal());
+
+
+//        System.out.println("findTempleByMaxEntryFee");
+//      System.out.println("Total:"+repo.findTempleByMaxEntryFee());
+
+//        System.out.println("updateLocationByName");
+//        repo.updateLocationByName("Malleshwaram", "Isckon temple");
+
+//        System.out.println("updateEntryFeeByName");
+//        repo.updateEntryFeeByName(500,"Ram mandir");
+//        System.out.println("Updated successfully");
+
+//        System.out.println("updateLocationAndDimensionById");
+//        repo.updateLocationAndDimensionById("Mahalakshmi layout",2050.00,4);
+//        System.out.println("Updated successfully");
+
+//        System.out.println("deleteByName");
+//        repo.deleteByName("Isckon temple");
+//        System.out.println("Deleted successfully");
+
+
     }
 }

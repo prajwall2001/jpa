@@ -256,4 +256,170 @@ finally {
         }
         return null;
     }
+
+    @Override
+    public TempleEntity findTempleByMaxEntryFee() {
+        System.out.println("Finding temple with maximum entry fee");
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+
+        try {
+            System.out.println("Transaction begin");
+            et.begin();
+
+            Query query = em.createNamedQuery("findTempleByMaxEntryFee");
+            TempleEntity temple = (TempleEntity) query.getSingleResult();
+
+            et.commit();
+            System.out.println("Transaction commit");
+
+            return temple;
+        }
+           catch(PersistenceException pe){
+                System.out.println("Persistence Exception:"+pe.getMessage());
+                et.rollback();
+            }
+           finally {
+                System.out.println("Closing resources");
+                em.close();
+            }
+            return null;
+    }
+
+    @Override
+    public void updateLocationByName(String location, String name) {
+        System.out.println("Update temple location " +location+ " by Name " +name);
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            et.begin();
+
+            Query query = em.createNamedQuery("updateLocationByName");
+            query.setParameter("loc", location);
+            query.setParameter("nm", name);
+
+           int rowsUpdated = query.executeUpdate();
+
+            et.commit();
+            System.out.println("Transaction commit. Rows updated: " + rowsUpdated);
+
+        } catch (PersistenceException pe) {
+            System.out.println("Persistence Exception: " + pe.getMessage());
+            et.rollback();
+        } finally {
+            System.out.println("Closing resources");
+            em.close();
+        }
+        TempleRepository.super.updateLocationByName(location, name);
+    }
+
+    @Override
+    public void updateEntryFeeByName(double entryFee, String name) {
+        System.out.println("Update temple EntryFee " +entryFee+ " by Name " +name);
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            et.begin();
+
+            Query query = em.createNamedQuery("updateEntryFeeByName");
+            query.setParameter("ef", entryFee);
+            query.setParameter("nam", name);
+
+            int rowsUpdated = query.executeUpdate();
+
+            et.commit();
+            System.out.println("Transaction commit. Rows updated: " + rowsUpdated);
+
+        } catch (PersistenceException pe) {
+            System.out.println("Persistence Exception: " + pe.getMessage());
+            et.rollback();
+        } finally {
+            System.out.println("Closing resources");
+            em.close();
+        }
+        TempleRepository.super.updateEntryFeeByName(entryFee, name);
+    }
+
+    @Override
+    public void updateLocationAndDimensionById(String location, double dimension, int id) {
+        System.out.println("Update temple Location and Dimension by id: " +id);
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            et.begin();
+
+            Query query = em.createNamedQuery("updateLocationAndDimensionById");
+            query.setParameter("lo", location);
+            query.setParameter("dm", dimension);
+            query.setParameter("i",id);
+
+            int rowsUpdated = query.executeUpdate();
+
+            et.commit();
+            System.out.println("Transaction commit. Rows updated: " + rowsUpdated);
+
+        } catch (PersistenceException pe) {
+            System.out.println("Persistence Exception: " + pe.getMessage());
+            et.rollback();
+        } finally {
+            System.out.println("Closing resources");
+            em.close();
+        }
+        TempleRepository.super.updateLocationAndDimensionById(location, dimension, id);
+    }
+
+    @Override
+    public void deleteByName(String name) {
+        System.out.println("Deleting temple by name: " + name);
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+
+        try {
+            et.begin();
+            Query query = em.createNamedQuery("deleteByName");
+            query.setParameter("nm", name);
+
+            int rowsDeleted = query.executeUpdate();
+
+            et.commit();
+            System.out.println("Transaction committed. Rows deleted: " + rowsDeleted);
+        } catch (PersistenceException pe) {
+            System.out.println("Persistence Exception: " + pe.getMessage());
+            et.rollback();
+        } finally {
+            System.out.println("Closing resources");
+            em.close();
+        }
+    }
+
+    @Override
+    public void updateAllVipEntryFee(boolean entryFee, List<Integer> id) {
+        System.out.println("EntryFee: " + entryFee);
+
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+
+        try {
+            et.begin();
+            Query query = em.createNamedQuery("updateAllVipEntryFee");
+            query.setParameter("entf", entryFee);
+            query.setParameter("ids",id);
+
+            int rowsDeleted = query.executeUpdate();
+
+            et.commit();
+            System.out.println("Transaction committed. Rows deleted: " + rowsDeleted);
+        } catch (PersistenceException pe) {
+            System.out.println("Persistence Exception: " + pe.getMessage());
+            et.rollback();
+        } finally {
+            System.out.println("Closing resources");
+            em.close();
+        }
+    }
 }

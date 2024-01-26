@@ -38,4 +38,20 @@ default List<TempleEntity> findById(int id){
         return Collections.emptyList();
     }
     Long findTotal();
+
+    TempleEntity findTempleByMaxEntryFee();
+
+
+    default void updateLocationByName(String location,String name){
+
+    }
+    default  void updateEntryFeeByName(double entryFee,String name){
+
+    }
+    default void updateLocationAndDimensionById(String location,double dimension,int id){
+
+    }
+    void deleteByName(String name);
+
+    void updateAllVipEntryFee(boolean entryFee, List<Integer> id);
 }

@@ -21,6 +21,12 @@ import java.time.LocalDate;
 @NamedQuery(name="findById",query = "SELECT ent FROM TempleEntity as ent WHERE ent.id=:idd ")
 @NamedQuery(name = "findByIdAndMainGod", query = "SELECT e FROM TempleEntity e WHERE e.id = :idd AND e.mainGod = :mainGodd")
 @NamedQuery(name = "findTotal", query = "SELECT COUNT(ent) FROM TempleEntity ent")
+@NamedQuery(name = "findTempleByMaxEntryFee", query = "SELECT t FROM TempleEntity t WHERE t.entryFee = (SELECT MAX(tt.entryFee) FROM TempleEntity tt)")
+@NamedQuery(name="updateLocationByName",query = "UPDATE TempleEntity t SET t.location = :loc WHERE t.name = :nm")
+@NamedQuery(name="updateEntryFeeByName",query = "UPDATE TempleEntity t SET t.entryFee = :ef WHERE t.name = :nam")
+@NamedQuery(name="updateLocationAndDimensionById",query = "update TempleEntity ent Set ent.location=:lo, ent.dimension=:dm where ent.id=:i")
+@NamedQuery(name="deleteByName",query = "delete from TempleEntity entt where entt.name=:nm")
+@NamedQuery(name = "updateAllVipEntryFee", query = "UPDATE TempleEntity v SET v.entryFee = :entf WHERE v.id IN :ids")
 public class TempleEntity {
     @Id
     @Column(name="t_id")
@@ -48,3 +54,5 @@ public class TempleEntity {
     @Column(name="dimension")
     private double dimension;
 }
+
+
