@@ -5,6 +5,11 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa"></property>
             <property name="javax.persistence.jdbc.user" value="root"></property>
             <property name="javax.persistence.jdbc.password" value="Xworkzodc@123"></property>
+            <property name="hibernate.hikari.minimumIdle" value="5" />
+            <property name="hibernate.hikari.maximumPoolSize" value="10" />
+            <property name="hibernate.hikari.idleTimeout" value="30000" />
+            <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
+
         </properties>
     </persistence-unit>
 </persistence>

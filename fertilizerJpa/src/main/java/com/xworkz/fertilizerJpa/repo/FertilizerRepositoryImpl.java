@@ -1,12 +1,13 @@
 package com.xworkz.fertilizerJpa.repo;
 
 import com.xworkz.fertilizerJpa.entity.FertilizerEntity;
+import com.xworkz.fertilizerJpa.util.EMFUtil;
 
 import javax.persistence.*;
 import java.util.List;
 
 public class FertilizerRepositoryImpl implements FertilizerRepository {
-    private EntityManagerFactory emf= Persistence.createEntityManagerFactory("x-workz");
+    private EntityManagerFactory emf= EMFUtil.getEntityManagerFactory();
     @Override
     public Integer save(FertilizerEntity entity) {
         System.out.println("Starting save of FertilizerEntity:" + entity);

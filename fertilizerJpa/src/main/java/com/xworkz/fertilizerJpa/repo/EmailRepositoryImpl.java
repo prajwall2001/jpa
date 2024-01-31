@@ -1,11 +1,12 @@
 package com.xworkz.fertilizerJpa.repo;
 
 import com.xworkz.fertilizerJpa.entity.EmailEntity;
+import com.xworkz.fertilizerJpa.util.EMFUtil;
 
 import javax.persistence.*;
 
 public class EmailRepositoryImpl implements EmailRepository{
-    private EntityManagerFactory emf= Persistence.createEntityManagerFactory("x-workz");
+    private EntityManagerFactory emf= EMFUtil.getEntityManagerFactory();
     @Override
     public Integer save(EmailEntity entity) {
         System.out.println("Starting save in EmailEntity:"+entity);
